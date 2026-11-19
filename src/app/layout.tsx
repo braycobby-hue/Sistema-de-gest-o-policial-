@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SIAC",
-  description: "Sistema Inteligente de Análise Criminal",
+  title: "SIAC | Sistema Inteligente de Análise Criminal",
+  description: "Plataforma demonstrativa para consolidação, validação e análise estatística criminal em Moçambique.",
+  applicationName: "SIAC",
+  themeColor: "#0b222e",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
