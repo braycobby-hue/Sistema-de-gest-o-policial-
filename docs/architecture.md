@@ -68,5 +68,6 @@ docs/                  decisões, API, segurança e operação
 ## Estado desta entrega
 
 - Painel inicial de demonstração, navegação por módulos, pesquisa local no conjunto fictício, gráfico ilustrativo e avisos explícitos de dados não oficiais.
-- A navegação dos módulos ainda não representa páginas funcionais; formulários, APIs, autenticação, banco de dados, regras estatísticas e relatórios reais permanecem por implementar.
-- Nenhuma conexão de banco de dados foi criada nesta fase. A próxima implementação que armazene ou consulte dados deve primeiro provisionar/confirmar Neon e definir o esquema e a autorização com base nas decisões institucionais aprovadas.
+- Os módulos têm páginas demonstrativas com capacidades, fluxos e decisões institucionais pendentes. Não consultam nem guardam dados reais.
+- A autenticação foi adiada; não há sessão, API de autenticação ou rota de início de sessão nesta versão. A interface é pública e apenas demonstrativa.
+- Formulários operacionais, APIs, banco de dados de domínio, regras estatísticas e relatórios reais permanecem por implementar. Antes de persistir ou consultar dados, provisionar/confirmar Neon e aprovar esquema, autorização e políticas institucionais.

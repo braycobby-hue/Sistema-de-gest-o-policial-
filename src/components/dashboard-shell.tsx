@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ModuleWorkspace } from "@/components/module-workspace";
 
 const navigation = [
   { section: "VISÃO GERAL", items: ["Painel inicial", "Estatísticas", "Análises territoriais", "Alertas"] },
@@ -29,7 +30,7 @@ function Sidebar({ active, onNavigate }: { active: string; onNavigate: (item: st
       <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/assebleia-dqS2oPWtXrZZnbmsFZkxVh6QuGy7gF.jpg" alt="Emblema da República de Moçambique" />
       <span className="brand-copy"><strong>SIAC</strong><small>Sistema de análise criminal</small></span>
     </a>
-    <div className="territory"><span className="territory-icon">⌖</span><span><small>ÂMBITO DE ACESSO</small><strong>Nacional</strong></span><span className="chevron">⌄</span></div>
+    <div className="territory"><span className="territory-icon">⌖</span><span><small>ÂMBITO ILUSTRATIVO</small><strong>Nacional</strong></span><span className="chevron">⌄</span></div>
     <nav aria-label="Navegação principal">
       {navigation.map((group) => <div className="nav-group" key={group.section}>
         <p className="nav-label">{group.section}</p>
@@ -64,8 +65,9 @@ export default function DashboardShell() {
   return <main className="app-shell">
     <Sidebar active={active} onNavigate={setActive} />
     <section className="workspace">
-      <header className="topbar"><div className="breadcrumb"><span>SIAC</span><span className="crumb-separator">/</span><strong>{active}</strong></div><div className="top-actions"><span className="environment-pill"><i /> DADOS DE DEMONSTRAÇÃO</span><button className="icon-button" aria-label="Notificações">♧<i className="notification-dot" /></button><span className="top-divider" /><button className="profile-button"><span className="avatar">AM</span><span className="profile-copy"><strong>Analista de demonstração</strong><small>Perfil institucional</small></span><span className="chevron">⌄</span></button></div></header>
+      <header className="topbar"><div className="breadcrumb"><span>SIAC</span><span className="crumb-separator">/</span><strong>{active}</strong></div><div className="top-actions"><span className="environment-pill"><i /> DADOS DE DEMONSTRAÇÃO</span><button className="icon-button" aria-label="Notificações">♧<i className="notification-dot" /></button><span className="top-divider" /><div className="profile-button"><span className="avatar">DEMO</span><span className="profile-copy"><strong>Conta de demonstração</strong><small>Sem autenticação · dados fictícios</small></span></div></div></header>
       <div className="page-content">
+        {active === "Painel inicial" ? <>
         <div className="page-heading"><div><div className="eyebrow"><span className="live-dot" /> VISÃO NACIONAL <span className="eyebrow-line" /> 19 NOVEMBRO 2026</div><h1>{active}</h1><p className="subtitle">Panorama consolidado de informação criminal — Moçambique</p></div><div className="heading-actions"><button className="button button-secondary" onClick={() => setPeriod(period === "Últimos 12 meses" ? "Últimos 30 dias" : "Últimos 12 meses")}><span>▦</span>{period}<span className="chevron">⌄</span></button><button className="button button-primary" onClick={() => setActive("Relatórios")}><span>＋</span> Criar relatório</button></div></div>
         <div className="demo-banner"><span className="demo-mark">i</span><p><strong>Ambiente de demonstração.</strong> Todos os registos e indicadores nesta página são fictícios. Nenhum dado policial real está a ser processado.</p><span className="demo-tag">SEM VALOR OFICIAL</span></div>
         <section className="metrics-grid" aria-label="Indicadores ilustrativos">
@@ -80,6 +82,7 @@ export default function DashboardShell() {
         </section>
         <section className="panel activity-panel"><div className="panel-heading activity-heading"><div><h2>Submissões recentes</h2><p>Actividade demonstrativa das unidades policiais</p></div><button className="button button-link" onClick={() => setActive("Submissões")}>Ver todas <span>→</span></button></div><div className="table-toolbar"><label className="search-box"><span>⌕</span><input aria-label="Pesquisar registos" placeholder="Pesquisar por referência, tipo ou localidade" value={query} onChange={(event) => setQuery(event.target.value)} /></label><button className="filter-button" onClick={() => setQuery("")}>☷ <span>Filtros</span></button></div><div className="table-scroll"><table><thead><tr><th>REFERÊNCIA</th><th>TIPO DE OCORRÊNCIA</th><th>LOCALIZAÇÃO</th><th>DATA DE SUBMISSÃO</th><th>ESTADO</th><th aria-label="Acções" /></tr></thead><tbody>{visibleIncidents.map((row) => <tr key={row.code}><td className="ref-cell">{row.code}</td><td>{row.type}</td><td>{row.area}</td><td>{row.date}</td><td><span className={`status status-${row.tone}`}><i />{row.status}</span></td><td><button className="row-more" aria-label={`Opções para ${row.code}`}>•••</button></td></tr>)}{visibleIncidents.length === 0 && <tr><td colSpan={6} className="empty-row">Nenhum registo corresponde à pesquisa.</td></tr>}</tbody></table></div><div className="table-footer"><span>A mostrar <strong>{visibleIncidents.length}</strong> de <strong>4</strong> registos demonstrativos</span><button onClick={() => setActive("Submissões")}>Abrir módulo de submissões <span>→</span></button></div></section>
         <footer className="page-footer"><span>SIAC · Sistema Inteligente de Análise Criminal</span><span>Protótipo funcional · Dados fictícios · 2026</span></footer>
+        </> : <ModuleWorkspace moduleName={active} />}
       </div>
     </section>
   </main>;
