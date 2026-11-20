@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SIAC | Sistema Inteligente de Análise Criminal",
-  description: "Plataforma demonstrativa para consolidação, validação e análise estatística criminal em Moçambique.",
+  description: "Pré-visualização da interface SIAC para submissões estatísticas mensais. Sem autenticação ou persistência de dados.",
   applicationName: "SIAC",
 };
 
